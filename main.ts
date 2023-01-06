@@ -1,4 +1,4 @@
-import blog from "../blog.tsx";
+import blog from "./blog.tsx";
 
 blog({
   author: "salteadorneo",
