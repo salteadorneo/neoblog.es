@@ -186,7 +186,7 @@ export function PostPage({ post, state }: PostPageProps) {
                 fill="currentColor"
               />
             </svg>
-            Home
+            Inicio
           </a>
         </div>
         {post.coverHtml && (
