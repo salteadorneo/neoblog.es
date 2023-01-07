@@ -34,7 +34,7 @@ import type {
   Post,
 } from "./types.d.ts";
 
-import { Index } from "./components.tsx";
+import { Index } from "./components/Index.tsx";
 import { PostPage } from "./components/PostPage.tsx";
 
 export { Fragment, h };
