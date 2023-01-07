@@ -1,5 +1,3 @@
-// Copyright 2022 the Deno authors. All rights reserved. MIT license.
-
 /** @jsx h */
 /// <reference no-default-lib="true"/>
 /// <reference lib="dom" />
@@ -8,9 +6,11 @@
 
 import {
   callsites,
+  ConnInfo,
   createReporter,
   dirname,
   Feed,
+  FeedItem,
   Fragment,
   fromFileUrl,
   frontMatter,
@@ -26,8 +26,6 @@ import {
   UnoCSS,
   walk,
 } from "./deps.ts";
-import { Index, PostPage } from "./components.tsx";
-import type { ConnInfo, FeedItem } from "./deps.ts";
 import type {
   BlogContext,
   BlogMiddleware,
@@ -35,6 +33,9 @@ import type {
   BlogState,
   Post,
 } from "./types.d.ts";
+
+import { Index } from "./components.tsx";
+import { PostPage } from "./components/PostPage.tsx";
 
 export { Fragment, h };
 
