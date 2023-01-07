@@ -13,4 +13,10 @@ blog({
     // { title: "Twitter", url: "https://twitter.com/denobot" },
   ],
   // theme: "light",
+  dateFormat: (date) =>
+    new Date(date).toLocaleString("es-ES", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }),
 });
