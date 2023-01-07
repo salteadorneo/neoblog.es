@@ -3,7 +3,7 @@ import blog from "./blog.tsx";
 blog({
   author: "salteadorneo",
   title: "neoblog.es",
-  description: "The blog description.",
+  description: "el blog de salteadorneo",
   avatar: "https://deno-avatar.deno.dev/avatar/blog.svg",
   avatarClass: "rounded-full",
   links: [
