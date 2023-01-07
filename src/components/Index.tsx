@@ -30,7 +30,7 @@ export function Index({ state, posts }: IndexProps) {
     <div class="home">
       {state.header || (
         <header
-          class="w-full h-90 lt-sm:h-80 bg-cover bg-center bg-no-repeat"
+          class="w-full h-50 lt-sm:h-40 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: state.cover ? `url(${state.cover})` : undefined,
           }}
