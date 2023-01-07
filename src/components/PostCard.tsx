@@ -20,7 +20,7 @@ export function PostCard(
     <div class="pt-12 first:pt-0">
       {post.coverHtml && (
         <div
-          class="pb-6 w-24"
+          class="pb-6 max-w-16 h-24"
           dangerouslySetInnerHTML={{ __html: post.coverHtml }}
         />
       )}

@@ -44,7 +44,7 @@ export function PostPage({ post, state }: PostPageProps) {
         </div>
         {post.coverHtml && (
           <div
-            class="pb-12"
+            class="pb-12 aspect-square"
             dangerouslySetInnerHTML={{ __html: post.coverHtml }}
           />
         )}
