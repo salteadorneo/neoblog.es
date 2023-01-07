@@ -18,6 +18,12 @@ export function PostCard(
 ) {
   return (
     <div class="pt-12 first:pt-0">
+      {post.coverHtml && (
+        <div
+          class="pb-6 w-24"
+          dangerouslySetInnerHTML={{ __html: post.coverHtml }}
+        />
+      )}
       <h3 class="text-2xl font-bold">
         <a class="" href={post.pathname}>
           {post.title}
