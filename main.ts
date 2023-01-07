@@ -19,4 +19,5 @@ blog({
       month: "long",
       day: "numeric",
     }),
+  showHeaderOnPostPage: true,
 });

@@ -8,6 +8,7 @@
 import { gfm, h } from "../deps.ts";
 import type { BlogState, DateFormat, Post } from "../types.d.ts";
 import { Footer } from "./Footer.tsx";
+import { Header } from "./Header.tsx";
 import { Tags } from "./Tags.tsx";
 
 interface PostPageProps {
@@ -21,9 +22,10 @@ export function PostPage({ post, state }: PostPageProps) {
   });
   return (
     <div className={`post ${post.pathname.substring(1)}`}>
-      {state.showHeaderOnPostPage && state.header}
+      {state.showHeaderOnPostPage && <Header state={state} />}
+
       <div class="max-w-screen-sm px-6 pt-8 mx-auto">
-        <div class="pb-16">
+        <div class="pb-16 hidden">
           <a
             href="/"
             class="inline-flex items-center gap-1 text-sm text-gray-500/80 hover:text-gray-700 transition-colors"
@@ -42,12 +44,14 @@ export function PostPage({ post, state }: PostPageProps) {
             Inicio
           </a>
         </div>
+
         {post.coverHtml && (
           <div
-            class="pb-12 aspect-square"
+            class="pb-12"
             dangerouslySetInnerHTML={{ __html: post.coverHtml }}
           />
         )}
+
         <article>
           <h1 class="text-4xl text-gray-900 dark:text-gray-100 font-bold">
             {post.title}
