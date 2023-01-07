@@ -25,17 +25,17 @@ import {
   serveDir,
   UnoCSS,
   walk,
-} from "./deps.ts";
+} from "./src/deps.ts";
 import type {
   BlogContext,
   BlogMiddleware,
   BlogSettings,
   BlogState,
   Post,
-} from "./types.d.ts";
+} from "./src/types.d.ts";
 
-import { Index } from "./components/Index.tsx";
-import { PostPage } from "./components/PostPage.tsx";
+import { Index } from "./src/components/Index.tsx";
+import { PostPage } from "./src/components/PostPage.tsx";
 
 export { Fragment, h };
 
