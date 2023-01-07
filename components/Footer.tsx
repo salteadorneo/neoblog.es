@@ -17,7 +17,7 @@ export function Footer(props: { author?: string }) {
             class="inline-flex items-center gap-1 underline hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
             href="https://salteadorneo.dev/"
           >
-            salteadorneo
+            {props.author}
           </a>
         </span>
         <a
