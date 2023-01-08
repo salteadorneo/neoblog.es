@@ -14,7 +14,7 @@ tecnológica CES 2023, Google ha anunciado que estas mejoras se implementarán e
 la versión estable de Android Auto, por lo que todos los usuarios de la
 aplicación podrán beneficiarse de ellas.
 
-![Android Auto](https://storage.googleapis.com/gweb-uniblog-publish-prod/original_images/Copy_of_F037_AutoMoment_GIF2_v04_BLOG_960X540.gif)
+![Android Auto](../assets/android-auto-coolwalk.gif)
 
 Después de mucho tiempo de espera, los usuarios de la versión estable de Android
 Auto finalmente podrán utilizar la nueva interfaz Coolwalk, que se caracteriza
