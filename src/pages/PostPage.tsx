@@ -12,6 +12,7 @@ import { Header } from "../components/Header.tsx";
 import { IconLinkedin, IconTwitter } from "../components/SocialAppIcons.tsx";
 import { Tags } from "../components/Tags.tsx";
 import { Footer } from "../components/Footer.tsx";
+import { Time } from "../components/Time.tsx";
 
 interface PostPageProps {
   req: Request;
@@ -70,7 +71,7 @@ export function PostPage({ req, post, state }: PostPageProps) {
               <p>{post.author || state.author}</p>
             )} */
             }
-            <PrettyDate
+            <Time
               date={post.publishDate}
               dateFormat={state.dateFormat}
             />
@@ -124,19 +125,4 @@ export function PostPage({ req, post, state }: PostPageProps) {
       </div>
     </div>
   );
-}
-
-function PrettyDate(
-  { date, dateFormat }: {
-    date: Date;
-    dateFormat?: DateFormat;
-  },
-) {
-  let formatted;
-  if (dateFormat) {
-    formatted = dateFormat(date);
-  } else {
-    formatted = date.toISOString().split("T")[0];
-  }
-  return <time dateTime={date.toISOString()}>{formatted}</time>;
 }

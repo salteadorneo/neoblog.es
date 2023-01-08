@@ -8,6 +8,7 @@
 import { h } from "../deps.ts";
 import type { DateFormat, Post } from "../types.d.ts";
 import { Tags } from "./Tags.tsx";
+import { Time } from "./Time.tsx";
 
 export function PostCard(
   { post, dateFormat, lang }: {
@@ -35,7 +36,7 @@ export function PostCard(
         <Tags tags={post.tags} />
         <p class="text-gray-500/80">
           {post.author && <span>{post.author} {" "}</span>}
-          <PrettyDate
+          <Time
             date={post.publishDate}
             dateFormat={dateFormat}
           />
@@ -53,19 +54,4 @@ export function PostCard(
       </div>
     </article>
   );
-}
-
-function PrettyDate(
-  { date, dateFormat }: {
-    date: Date;
-    dateFormat?: DateFormat;
-  },
-) {
-  let formatted;
-  if (dateFormat) {
-    formatted = dateFormat(date);
-  } else {
-    formatted = date.toISOString().split("T")[0];
-  }
-  return <time dateTime={date.toISOString()}>{formatted}</time>;
 }
