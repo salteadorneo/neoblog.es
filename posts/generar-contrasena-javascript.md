@@ -1,6 +1,6 @@
 ---
 title: Generar contraseña con JavaScript
-date: 2022-01-08
+publish_date: 2023-01-08 20:00:00
 tags: ["javascript", "password", "random"]
 description: Generar una contraseña aleatoria con JavaScript.
 allow_iframes: true
