@@ -540,7 +540,8 @@ function filterPosts(
     return new Map(
       Array.from(posts.entries()).filter(([, p]) =>
         p.title.toLowerCase().includes(q.toLowerCase()) ||
-        p.markdown.toLowerCase().includes(q.toLowerCase())
+        p.markdown.toLowerCase().includes(q.toLowerCase()) ||
+        p.tags?.some((tag) => tag.toLowerCase().includes(q.toLowerCase()))
       ),
     );
   }
