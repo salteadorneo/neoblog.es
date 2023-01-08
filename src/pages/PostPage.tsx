@@ -7,10 +7,11 @@
 
 import { gfm, h } from "../deps.ts";
 import type { BlogState, DateFormat, Post } from "../types.d.ts";
-import { Footer } from "./Footer.tsx";
-import { Header } from "./Header.tsx";
-import { IconLinkedin, IconTwitter } from "./SocialAppIcons.tsx";
-import { Tags } from "./Tags.tsx";
+
+import { Header } from "../components/Header.tsx";
+import { IconLinkedin, IconTwitter } from "../components/SocialAppIcons.tsx";
+import { Tags } from "../components/Tags.tsx";
+import { Footer } from "../components/Footer.tsx";
 
 interface PostPageProps {
   req: Request;

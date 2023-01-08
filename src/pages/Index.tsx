@@ -8,9 +8,9 @@
 import { h } from "../deps.ts";
 import type { BlogState, Post } from "../types.d.ts";
 
-import { Footer } from "./Footer.tsx";
-import { PostCard } from "./PostCard.tsx";
-import { Header } from "./Header.tsx";
+import { Footer } from "../components/Footer.tsx";
+import { PostCard } from "../components/PostCard.tsx";
+import { Header } from "../components/Header.tsx";
 
 interface IndexProps {
   req: Request;
@@ -33,6 +33,14 @@ export function Index({ req, state, posts }: IndexProps) {
 
       <div class="max-w-screen-sm px-6 mx-auto">
         <div class="pt-16 lt-sm:pt-12">
+          {postIndex.length === 0 && (
+            <div class="text-center">
+              <h1 class="text-3xl font-bold">Nada por aquí</h1>
+              <p class="mt-2 text-gray-600">
+                No se encontraron resultados para la búsqueda.
+              </p>
+            </div>
+          )}
           {postIndex.map((post) => (
             <PostCard
               post={post}
