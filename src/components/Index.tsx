@@ -31,7 +31,7 @@ export function Index({ state, posts }: IndexProps) {
       {state.header || <Header state={state} />}
 
       <div class="max-w-screen-sm px-6 mx-auto">
-        <div class="pt-16 lt-sm:pt-12 border-t-1 border-gray-300/80">
+        <div class="pt-16 lt-sm:pt-12">
           {postIndex.map((post) => (
             <PostCard
               post={post}

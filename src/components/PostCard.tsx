@@ -17,37 +17,41 @@ export function PostCard(
   },
 ) {
   return (
-    <div class="pt-12 first:pt-0">
-      {post.coverHtml && (
-        <div
-          class="pb-6 max-w-16 h-24"
-          dangerouslySetInnerHTML={{ __html: post.coverHtml }}
-        />
-      )}
-      <h3 class="text-2xl font-bold">
-        <a class="" href={post.pathname}>
-          {post.title}
-        </a>
-      </h3>
-      <Tags tags={post.tags} />
-      <p class="text-gray-500/80">
-        {post.author && <span>{post.author} {" "}</span>}
-        <PrettyDate
-          date={post.publishDate}
-          dateFormat={dateFormat}
-        />
-      </p>
-      <p class="mt-3 text-gray-600 dark:text-gray-400">{post.snippet}</p>
-      <p class="mt-3">
-        <a
-          class="leading-tight text-gray-900 dark:text-gray-100 inline-block border-b-1 border-gray-600 hover:text-gray-500 hover:border-gray-500 transition-colors"
-          href={post.pathname}
-          title={`Read "${post.title}"`}
-        >
-          Leer más
-        </a>
-      </p>
-    </div>
+    <article class="pt-12 first:pt-0 flex flex-row gap-8">
+      <a href={post.pathname}>
+        {post.coverHtml && (
+          <div
+            class="pb-6 w-36 aspect-square"
+            dangerouslySetInnerHTML={{ __html: post.coverHtml }}
+          />
+        )}
+      </a>
+      <div>
+        <h3 class="text-2xl font-bold">
+          <a href={post.pathname}>
+            {post.title}
+          </a>
+        </h3>
+        <Tags tags={post.tags} />
+        <p class="text-gray-500/80">
+          {post.author && <span>{post.author} {" "}</span>}
+          <PrettyDate
+            date={post.publishDate}
+            dateFormat={dateFormat}
+          />
+        </p>
+        <p class="mt-3 text-gray-600 dark:text-gray-400">{post.snippet}</p>
+        <p class="mt-3">
+          <a
+            class="leading-tight text-gray-900 dark:text-gray-100 inline-block border-b-1 border-gray-600 hover:text-gray-500 hover:border-gray-500 transition-colors"
+            href={post.pathname}
+            title={`Read "${post.title}"`}
+          >
+            Leer más
+          </a>
+        </p>
+      </div>
+    </article>
   );
 }
 

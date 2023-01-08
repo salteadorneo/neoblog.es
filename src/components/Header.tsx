@@ -17,12 +17,12 @@ interface IndexProps {
 export function Header({ state }: IndexProps) {
   return (
     <header
-      class="w-full h-50 lt-sm:h-40 bg-cover bg-center bg-no-repeat"
+      class="w-full bg-cover bg-center bg-no-repeat pt-8"
       style={{
         backgroundImage: state.cover ? `url(${state.cover})` : undefined,
       }}
     >
-      <div class="max-w-screen-sm h-full px-6 mx-auto flex flex-col items-center justify-center">
+      <div class="max-w-screen-sm h-full px-6 mx-auto flex flex-col">
         {state.avatar && (
           <a
             href="/"
@@ -39,7 +39,9 @@ export function Header({ state }: IndexProps) {
           class="mt-3 text-4xl text-gray-900 dark:text-gray-100 font-bold"
           style={{ color: state.coverTextColor }}
         >
-          {state.title ?? ""}
+          <a href="/">
+            {state.title ?? ""}
+          </a>
         </h1>
         {state.description && (
           <p
@@ -55,7 +57,6 @@ export function Header({ state }: IndexProps) {
           </nav>
         )}
       </div>
-      <input type="text" placeholder="Buscar" class="p-2 bg-transparent" />
     </header>
   );
 }
