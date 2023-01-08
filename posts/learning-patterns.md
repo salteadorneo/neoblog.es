@@ -3,7 +3,7 @@ title: Learning Patterns
 date: 2023-01-08
 tags: ['javascript', 'react', 'patterns']
 abstract: Un patrón de diseño es una solución estandarizada a problemas comunes que enfrentan los programadores. Estos patrones permiten ahorrar tiempo al comunicarse con otros miembros del equipo ya que proporcionan un lenguaje común.
-cover_html: <img src=../assets/learning-patterns.webp />
+cover_html: <img src=../assets/learning-patterns.webp alt="Web de Learning Patterns" />
 og:image: https://neoblog.es/assets/learning-patterns.webp
 ---
 

@@ -14,7 +14,7 @@ export const socialAppIcons = new Map([
   ["linkedin.com", IconLinkedin],
 ]);
 
-function IconGithub() {
+export function IconGithub() {
   return (
     <svg
       className="inline-block w-10 h-10"
@@ -46,7 +46,7 @@ export function IconTwitter() {
   );
 }
 
-function IconInstagram() {
+export function IconInstagram() {
   return (
     <svg
       className="inline-block w-10 h-10"

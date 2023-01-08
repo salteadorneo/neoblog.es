@@ -89,6 +89,7 @@ export function PostPage({ req, post, state }: PostPageProps) {
               href={`https://www.linkedin.com/sharing/share-offsite/?url=${req.url}`}
               target="_blank"
               class="color-[#0e76a8]"
+              title="Compartir en LinkedIn"
             >
               <IconLinkedin />
             </a>
@@ -98,6 +99,7 @@ export function PostPage({ req, post, state }: PostPageProps) {
               }&hashtags=${post.tags?.join(",")}`}
               target="_blank"
               class="color-[#00acee]"
+              title="Compartir en Twitter"
             >
               <IconTwitter />
             </a>
