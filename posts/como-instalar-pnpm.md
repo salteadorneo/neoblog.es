@@ -1,6 +1,6 @@
 ---
 title: Instalando pnpm
-date: 2022-01-08
+date: 2023-01-08
 tags: ["pnpm", "nodejs", "javascript"]
 description: Guía rápida de comandos para instalar pnpm, un manejador de paquetes, rápido y eficiente que ahorra espacio en tu disco duro.
 cover_html: <img src=../assets/pnpm-no-name-with-frame.svg alt="Logo de pnpm" />
