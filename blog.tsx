@@ -364,6 +364,7 @@ export async function handler(
       ],
       body: (
         <Index
+          req={req}
           state={blogState}
           posts={filterPosts(POSTS, searchParams)}
         />
@@ -391,7 +392,7 @@ export async function handler(
         `.markdown-body { --color-canvas-default: transparent !important; --color-canvas-subtle: #edf0f2; --color-border-muted: rgba(128,128,128,0.2); } .markdown-body img + p { margin-top: 16px; }`,
         ...(blogState.style ? [blogState.style] : []),
       ],
-      body: <PostPage post={post} state={blogState} />,
+      body: <PostPage req={req} post={post} state={blogState} />,
     });
   }
 
@@ -528,13 +529,22 @@ function filterPosts(
   posts: Map<string, Post>,
   searchParams: URLSearchParams,
 ) {
-  const tag = searchParams.get("tag");
-  if (!tag) {
-    return posts;
+  const tag = searchParams.get("tag") || "";
+  if (tag) {
+    return new Map(
+      Array.from(posts.entries()).filter(([, p]) => p.tags?.includes(tag)),
+    );
   }
-  return new Map(
-    Array.from(posts.entries()).filter(([, p]) => p.tags?.includes(tag)),
-  );
+  const q = searchParams.get("q") || "";
+  if (q) {
+    return new Map(
+      Array.from(posts.entries()).filter(([, p]) =>
+        p.title.toLowerCase().includes(q.toLowerCase()) ||
+        p.markdown.toLowerCase().includes(q.toLowerCase())
+      ),
+    );
+  }
+  return posts;
 }
 
 function recordGetter(data: Record<string, unknown>) {

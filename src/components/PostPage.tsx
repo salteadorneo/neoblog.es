@@ -9,20 +9,22 @@ import { gfm, h } from "../deps.ts";
 import type { BlogState, DateFormat, Post } from "../types.d.ts";
 import { Footer } from "./Footer.tsx";
 import { Header } from "./Header.tsx";
+import { IconLinkedin, IconTwitter } from "./SocialAppIcons.tsx";
 import { Tags } from "./Tags.tsx";
 
 interface PostPageProps {
+  req: Request;
   state: BlogState;
   post: Post;
 }
 
-export function PostPage({ post, state }: PostPageProps) {
+export function PostPage({ req, post, state }: PostPageProps) {
   const html = gfm.render(post.markdown, {
     allowIframes: post.allowIframes,
   });
   return (
     <div className={`post ${post.pathname.substring(1)}`}>
-      {state.showHeaderOnPostPage && <Header state={state} />}
+      {state.showHeaderOnPostPage && <Header req={req} state={state} />}
 
       <div class="max-w-screen-sm px-6 pt-8 mx-auto">
         <div class="pb-16 hidden">
@@ -58,16 +60,21 @@ export function PostPage({ post, state }: PostPageProps) {
           </h1>
           {state.readtime &&
             <p>{post.readTime} min</p>}
+
           <Tags tags={post.tags} />
+
           <p class="mt-1 text-gray-500">
-            {(post.author || state.author) && (
+            {
+              /* {(post.author || state.author) && (
               <p>{post.author || state.author}</p>
-            )}
+            )} */
+            }
             <PrettyDate
               date={post.publishDate}
               dateFormat={state.dateFormat}
             />
           </p>
+
           <div
             class="mt-8 markdown-body"
             data-color-mode={state.theme ?? "auto"}
@@ -75,6 +82,26 @@ export function PostPage({ post, state }: PostPageProps) {
             data-dark-theme="dark"
             dangerouslySetInnerHTML={{ __html: html }}
           />
+
+          <div class="flex items-center gap-2 mt-4">
+            Compartir
+            <a
+              href={`https://www.linkedin.com/sharing/share-offsite/?url=${req.url}`}
+              target="_blank"
+              class="color-[#0e76a8]"
+            >
+              <IconLinkedin />
+            </a>
+            <a
+              href={`https://twitter.com/share?url=${req.url}&text=${
+                encodeURIComponent(post.title)
+              }&hashtags=${post.tags?.join(",")}`}
+              target="_blank"
+              class="color-[#00acee]"
+            >
+              <IconTwitter />
+            </a>
+          </div>
         </article>
 
         {state.section && state.section(post)}

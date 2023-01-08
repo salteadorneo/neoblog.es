@@ -13,11 +13,12 @@ import { PostCard } from "./PostCard.tsx";
 import { Header } from "./Header.tsx";
 
 interface IndexProps {
+  req: Request;
   state: BlogState;
   posts: Map<string, Post>;
 }
 
-export function Index({ state, posts }: IndexProps) {
+export function Index({ req, state, posts }: IndexProps) {
   const postIndex = [];
   for (const [_key, post] of posts.entries()) {
     postIndex.push(post);
@@ -28,7 +29,7 @@ export function Index({ state, posts }: IndexProps) {
 
   return (
     <div class="home">
-      {state.header || <Header state={state} />}
+      {state.header || <Header req={req} state={state} />}
 
       <div class="max-w-screen-sm px-6 mx-auto">
         <div class="pt-16 lt-sm:pt-12">
