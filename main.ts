@@ -3,7 +3,7 @@ import blog from "./blog.tsx";
 blog({
   author: "salteadorneo",
   title: "neoblog.es",
-  description: "el blog de salteadorneo",
+  description: "El blog de /salteadorneo/",
   lang: "es",
   links: [
     {
