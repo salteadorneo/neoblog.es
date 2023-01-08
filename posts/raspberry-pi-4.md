@@ -4,6 +4,7 @@ publish_date: 2019-06-24
 tags: ['hardware']
 abstract: Raspberry Pi 4 es el nuevo modelo de la Raspberry Pi Foundation, la placa de desarrollo más popular del mundo. Es un ordenador de bolsillo que se puede usar para aprender a programar, hacer proyectos electrónicos, jugar juegos, y mucho más.
 cover_html: <img src=../assets/raspberry.svg />
+og:image: https://neoblog.es/assets/raspberry.svg
 ---
 
 La Raspberry Pi 4 es una computadora de pequeño tamaño y bajo costo desarrollada
