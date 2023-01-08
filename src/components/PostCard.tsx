@@ -17,11 +17,11 @@ export function PostCard(
   },
 ) {
   return (
-    <article class="pt-12 first:pt-0 flex flex-row gap-8">
+    <article class="pt-12 first:pt-0 flex flex-col sm:flex-row gap-8">
       <a href={post.pathname}>
         {post.coverHtml && (
           <div
-            class="pb-6 w-36 aspect-square"
+            class="pb-6 sm:w-36 sm:aspect-square"
             dangerouslySetInnerHTML={{ __html: post.coverHtml }}
           />
         )}
