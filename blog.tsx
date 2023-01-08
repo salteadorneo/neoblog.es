@@ -85,21 +85,6 @@ function errorHandler(err: unknown) {
   });
 }
 
-/** The main function of the library.
- *
- * ```jsx
- * import blog, { ga } from "https://deno.land/x/blog/blog.tsx";
- *
- * blog({
- *   title: "My Blog",
- *   description: "The blog description.",
- *   avatar: "./avatar.png",
- *   middlewares: [
- *     ga("GA-ANALYTICS-KEY"),
- *   ],
- * });
- * ```
- */
 export default async function blog(settings?: BlogSettings) {
   html.use(UnoCSS(settings?.unocss)); // Load custom unocss module if provided
 
@@ -376,7 +361,7 @@ export async function handler(
   if (post) {
     return html({
       ...sharedHtmlOptions,
-      title: post.title,
+      title: post.title + " - " + (blogState.title ?? "My Blog"),
       meta: {
         "description": post.snippet,
         "og:title": post.title,
@@ -460,37 +445,6 @@ function serveRSS(
   });
 }
 
-export function ga(gaKey: string): BlogMiddleware {
-  if (gaKey.length === 0) {
-    throw new Error("GA key cannot be empty.");
-  }
-
-  const gaReporter = createReporter({ id: gaKey });
-
-  return async function (
-    request: Request,
-    ctx: BlogContext,
-  ): Promise<Response> {
-    let err: undefined | Error;
-    let res: undefined | Response;
-
-    const start = performance.now();
-    try {
-      res = await ctx.next() as Response;
-    } catch (e) {
-      err = e as Error;
-      res = new Response(`Internal server error: ${err.message}`, {
-        status: 500,
-      });
-    } finally {
-      if (gaReporter) {
-        gaReporter(request, ctx.connInfo, res!, start, err);
-      }
-    }
-    return res;
-  };
-}
-
 export function redirects(redirectMap: Record<string, string>): BlogMiddleware {
   return async function (req: Request, ctx: BlogContext): Promise<Response> {
     const { pathname } = new URL(req.url);
@@ -529,23 +483,29 @@ function filterPosts(
   posts: Map<string, Post>,
   searchParams: URLSearchParams,
 ) {
+  let postsDraft = Array.from(posts.entries());
+
   const tag = searchParams.get("tag") || "";
   if (tag) {
-    return new Map(
-      Array.from(posts.entries()).filter(([, p]) => p.tags?.includes(tag)),
+    postsDraft = postsDraft.filter(([, p]: [string, Post]) =>
+      p.tags?.includes(tag)
     );
   }
+
   const q = searchParams.get("q") || "";
   if (q) {
-    return new Map(
-      Array.from(posts.entries()).filter(([, p]) =>
-        p.title.toLowerCase().includes(q.toLowerCase()) ||
-        p.markdown.toLowerCase().includes(q.toLowerCase()) ||
-        p.tags?.some((tag) => tag.toLowerCase().includes(q.toLowerCase()))
-      ),
+    postsDraft = postsDraft.filter(([, p]: [string, Post]) =>
+      p.title.toLowerCase().includes(q.toLowerCase()) ||
+      p.markdown.toLowerCase().includes(q.toLowerCase()) ||
+      p.tags?.some((tag) => tag.toLowerCase().includes(q.toLowerCase()))
     );
   }
-  return posts;
+
+  postsDraft.sort((a, b) =>
+    b[1].publishDate.getTime() - a[1].publishDate.getTime()
+  );
+
+  return new Map(postsDraft);
 }
 
 function recordGetter(data: Record<string, unknown>) {

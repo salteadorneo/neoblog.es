@@ -22,11 +22,13 @@ blog({
       target: "_blank",
     },
   ],
-  dateFormat: (date) =>
-    new Date(date).toLocaleString("es-ES", {
+  dateFormat: (date) => {
+    if (!date) return "";
+    return new Date(date).toLocaleString("es-ES", {
       year: "numeric",
       month: "long",
       day: "numeric",
-    }),
+    });
+  },
   showHeaderOnPostPage: true,
 });
