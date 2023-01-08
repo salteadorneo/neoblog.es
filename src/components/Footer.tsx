@@ -10,7 +10,7 @@ import { h } from "../deps.ts";
 export function Footer(props: { author?: string }) {
   return (
     <footer class="mt-20 pb-16 lt-sm:pb-8 lt-sm:mt-16">
-      <p class="flex items-center justify-end gap-2.5 text-gray-400/800 dark:text-gray-500/800 text-sm">
+      <p class="flex items-center justify-center gap-2.5 text-gray-400/800 dark:text-gray-500/800 text-sm">
         <span class="flex gap-2 items-center">
           Desarrollado con <DenoIcon /> Deno por{" "}
           <a
