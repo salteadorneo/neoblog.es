@@ -83,27 +83,38 @@ export function PostPage({ req, post, state }: PostPageProps) {
             dangerouslySetInnerHTML={{ __html: html }}
           />
 
-          <div class="flex items-center gap-2 mt-4">
-            Compartir
+          <section class="flex items-center justify-between mt-8">
+            <div class="flex items-center gap-2">
+              Compartir
+              <a
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${req.url}`}
+                target="_blank"
+                class="color-[#0e76a8]"
+                title="Compartir en LinkedIn"
+              >
+                <IconLinkedin />
+              </a>
+              <a
+                href={`https://twitter.com/share?url=${req.url}&text=${
+                  encodeURIComponent(post.title)
+                }&hashtags=${post.tags?.join(",")}`}
+                target="_blank"
+                class="color-[#00acee]"
+                title="Compartir en Twitter"
+              >
+                <IconTwitter />
+              </a>
+            </div>
             <a
-              href={`https://www.linkedin.com/sharing/share-offsite/?url=${req.url}`}
+              href={`https://pr.new/github.com/salteadorneo/neoblog.es/edit/main/posts${post.pathname}.md`}
               target="_blank"
-              class="color-[#0e76a8]"
-              title="Compartir en LinkedIn"
             >
-              <IconLinkedin />
+              <img
+                src="https://developer.stackblitz.com/img/edit_in_web_publisher.svg"
+                alt="Editar en StackBlitz"
+              />
             </a>
-            <a
-              href={`https://twitter.com/share?url=${req.url}&text=${
-                encodeURIComponent(post.title)
-              }&hashtags=${post.tags?.join(",")}`}
-              target="_blank"
-              class="color-[#00acee]"
-              title="Compartir en Twitter"
-            >
-              <IconTwitter />
-            </a>
-          </div>
+          </section>
         </article>
 
         {state.section && state.section(post)}
