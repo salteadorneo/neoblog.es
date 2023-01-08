@@ -21,7 +21,6 @@ blog({
       url: "mailto:hola@salteadorneo.dev",
       target: "_blank",
     },
-    { title: "Sobre mí", url: "https://salteadorneo.dev", target: "_blank" },
   ],
   dateFormat: (date) =>
     new Date(date).toLocaleString("es-ES", {
