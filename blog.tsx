@@ -7,7 +7,6 @@
 import {
   callsites,
   ConnInfo,
-  createReporter,
   dirname,
   Feed,
   FeedItem,
@@ -177,9 +176,7 @@ async function loadContent(blogDirectory: string, isDev: boolean) {
   const postsDirectory = join(blogDirectory, "posts");
 
   // TODO(@satyarohith): not efficient for large number of posts.
-  for await (
-    const entry of walk(postsDirectory)
-  ) {
+  for await (const entry of walk(postsDirectory)) {
     if (entry.isFile && entry.path.endsWith(".md")) {
       await loadPost(postsDirectory, entry.path);
     }
@@ -254,13 +251,11 @@ async function loadPost(postsDirectory: string, path: string) {
     allowIframes: data.get("allow_iframes"),
     readTime: readingTime(content),
   };
+
   POSTS.set(pathname, post);
 }
 
-export async function handler(
-  req: Request,
-  ctx: BlogContext,
-) {
+export async function handler(req: Request, ctx: BlogContext) {
   const { state: blogState } = ctx;
   const { pathname, searchParams } = new URL(req.url);
   const canonicalUrl = blogState.canonicalUrl || new URL(req.url).origin;
@@ -299,9 +294,7 @@ export async function handler(
     colorScheme: blogState.theme ?? "auto",
     lang: blogState.lang ?? "en",
     scripts: IS_DEV ? [{ src: "/hmr.js" }] : undefined,
-    links: [
-      { href: canonicalUrl, rel: "canonical" },
-    ],
+    links: [{ href: canonicalUrl, rel: "canonical" }],
   };
 
   if (typeof blogState.favicon === "string") {
@@ -335,7 +328,7 @@ export async function handler(
       ...sharedHtmlOptions,
       title: blogState.title ?? "My Blog",
       meta: {
-        "description": blogState.description,
+        description: blogState.description,
         "og:title": blogState.title,
         "og:description": blogState.description,
         "og:image": ogImage ?? blogState.cover,
@@ -344,9 +337,7 @@ export async function handler(
         "twitter:image": ogImage ?? blogState.cover,
         "twitter:card": ogImage ? twitterCard : undefined,
       },
-      styles: [
-        ...(blogState.style ? [blogState.style] : []),
-      ],
+      styles: [...(blogState.style ? [blogState.style] : [])],
       body: (
         <Index
           req={req}
@@ -363,7 +354,7 @@ export async function handler(
       ...sharedHtmlOptions,
       title: post.title + " - " + (blogState.title ?? "My Blog"),
       meta: {
-        "description": post.snippet,
+        description: post.snippet,
         "og:title": post.title,
         "og:description": post.snippet,
         "og:image": post.ogImage,
@@ -464,7 +455,7 @@ export function redirects(redirectMap: Record<string, string>): BlogMiddleware {
       return new Response(null, {
         status: 307,
         headers: {
-          "location": maybeRedirect,
+          location: maybeRedirect,
         },
       });
     }
@@ -479,10 +470,7 @@ export function redirects(redirectMap: Record<string, string>): BlogMiddleware {
   };
 }
 
-function filterPosts(
-  posts: Map<string, Post>,
-  searchParams: URLSearchParams,
-) {
+function filterPosts(posts: Map<string, Post>, searchParams: URLSearchParams) {
   let postsDraft = Array.from(posts.entries());
 
   const tag = searchParams.get("tag") || "";
@@ -494,15 +482,16 @@ function filterPosts(
 
   const q = searchParams.get("q") || "";
   if (q) {
-    postsDraft = postsDraft.filter(([, p]: [string, Post]) =>
-      p.title.toLowerCase().includes(q.toLowerCase()) ||
-      p.markdown.toLowerCase().includes(q.toLowerCase()) ||
-      p.tags?.some((tag) => tag.toLowerCase().includes(q.toLowerCase()))
+    postsDraft = postsDraft.filter(
+      ([, p]: [string, Post]) =>
+        p.title.toLowerCase().includes(q.toLowerCase()) ||
+        p.markdown.toLowerCase().includes(q.toLowerCase()) ||
+        p.tags?.some((tag) => tag.toLowerCase().includes(q.toLowerCase())),
     );
   }
 
-  postsDraft.sort((a, b) =>
-    b[1].publishDate.getTime() - a[1].publishDate.getTime()
+  postsDraft.sort(
+    (a, b) => b[1].publishDate.getTime() - a[1].publishDate.getTime(),
   );
 
   return new Map(postsDraft);
