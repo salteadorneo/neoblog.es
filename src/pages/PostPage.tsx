@@ -110,11 +110,9 @@ export function PostPage({ req, post, state }: PostPageProps) {
             <a
               href={`https://pr.new/github.com/salteadorneo/neoblog.es/edit/main/posts${post.pathname}.md`}
               target="_blank"
+              class="text-sm text-gray-500/80 hover:text-gray-700 transition-colors"
             >
-              <img
-                src="https://developer.stackblitz.com/img/edit_in_web_publisher.svg"
-                alt="Editar en StackBlitz"
-              />
+              Editar en StackBlitz
             </a>
           </section>
         </article>
