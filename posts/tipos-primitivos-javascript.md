@@ -14,13 +14,12 @@ let a = 1; // Primitivo
 let b = [1, 2, 3]; // Objeto
 ```
 
-Los primitivos incluyen **undefined**, **null**, **Boolean**, **Number**,
-**String**, **BigInt** y **Symbol**. Estos primitivos representan datos en la
-implementación más básica posible. Todo lo que no es un primitivo es un objeto,
-como el propio **Object**, así como también los **Array**, **Set**, **Map**,
-**Date**, **Regex**, **Promise** y cualquier otra cosa que se pueda imaginar.
-Las Function también son objetos, pero tienen la particularidad de que se pueden
-invocar (ejecutar).
+Los primitivos incluyen `undefined`, `null`, `Boolean`, `Number`, `String`,
+`BigInt` y `Symbol`. Estos primitivos representan datos en la implementación más
+básica posible. Todo lo que no es un primitivo es un objeto, como el propio
+`Object`, así como también los `Array`, `Set`, `Map`, `Date`, `Regex`, `Promise`
+y cualquier otra cosa que se pueda imaginar. Las Function también son objetos,
+pero tienen la particularidad de que se pueden invocar (ejecutar).
 
 Para determinar el tipo de dato en JavaScript, se puede utilizar el operador
 typeof. Este operador tiene algunas peculiaridades, como que considera a las
