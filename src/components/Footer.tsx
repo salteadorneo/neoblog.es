@@ -37,6 +37,8 @@ export function Footer(props: { author?: string }) {
           RSS
         </a>
       </p>
+
+      <script data-no-cookie async src="https://cdn.splitbee.io/sb.js"></script>
     </footer>
   );
 }
