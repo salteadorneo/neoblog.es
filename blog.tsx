@@ -270,6 +270,10 @@ export async function handler(req: Request, ctx: BlogContext) {
     return serveRSS(req, blogState, POSTS);
   }
 
+  if (pathname === "/sitemap.xml") {
+    return serveSitemap(req, blogState, POSTS);
+  }
+
   if (IS_DEV) {
     if (pathname == "/hmr.js") {
       return new Response(HMR_CLIENT, {
@@ -432,6 +436,54 @@ function serveRSS(
   return new Response(atomFeed, {
     headers: {
       "content-type": "application/atom+xml; charset=utf-8",
+    },
+  });
+}
+
+function serveSitemap(
+  req: Request,
+  state: BlogState,
+  posts: Map<string, Post>,
+): Response {
+  const url = state.canonicalUrl
+    ? new URL(state.canonicalUrl)
+    : new URL(req.url);
+  const origin = url.origin;
+
+  let urls = "";
+  for (const [_key, post] of posts.entries()) {
+    urls += `<url>
+    <loc>${origin}${post.pathname}</loc>
+    <lastmod>${post.publishDate.toISOString().split("T")[0]}</lastmod>
+    <priority>0.80</priority>
+    </url>`;
+    if (post.tags) {
+      for (const tag of post.tags) {
+        urls += `<url>
+        <loc>${origin}/?tag=${tag}</loc>
+        <lastmod>${post.publishDate.toISOString().split("T")[0]}</lastmod>
+        <priority>0.70</priority>
+        </url>`;
+      }
+    }
+  }
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+  <urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+  http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <url>
+    <loc>${origin}</loc>
+    <lastmod>${new Date().toISOString().split("T")[0]}</lastmod>
+    <priority>1.00</priority>
+  </url>
+  ${urls}
+  </urlset>`;
+  return new Response(xml, {
+    headers: {
+      "content-type": "application/xml; charset=utf-8",
     },
   });
 }
