@@ -1,6 +1,6 @@
 ---
 title: Obtener el slug de un texto
-publish_date: 2023-01-11 17:48:00
+publish_date: 2023-01-11 17:48
 tags: ["javascript", "slug", "string"]
 description: Buscando la mejor forma de obtener un slug de un texto en javascript
 allow_iframes: true

@@ -1,6 +1,6 @@
 ---
 title: Generar contraseña con JavaScript
-publish_date: 2023-01-08 20:00:00
+publish_date: 2023-01-08 20:00
 tags: ["javascript", "password", "random"]
 description: Una sencilla función en JavaScript que devuelve una contraseña aleatoria.
 allow_iframes: true
