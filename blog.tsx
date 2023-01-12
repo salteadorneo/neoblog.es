@@ -426,7 +426,7 @@ function serveRSS(
     ? new URL(state.canonicalUrl)
     : new URL(req.url);
   const origin = url.origin;
-  const copyright = `${new Date().getFullYear()} ${origin}`;
+
   const feed = new Feed({
     title: state.title ?? "Blog",
     description: state.description,
@@ -434,7 +434,6 @@ function serveRSS(
     link: `${origin}/blog`,
     language: state.lang ?? "en",
     favicon: `${origin}/favicon.ico`,
-    copyright: copyright,
     generator: "Feed for Deno",
     feedLinks: {
       atom: `${origin}/feed`,
@@ -443,7 +442,7 @@ function serveRSS(
 
   for (const [_key, post] of posts.entries()) {
     const item: FeedItem = {
-      id: `${origin}/${post.title}`,
+      id: `${origin}/${post.pathname}`,
       title: post.title,
       description: post.snippet,
       date: post.publishDate,
@@ -452,7 +451,6 @@ function serveRSS(
         name: author.trim(),
       })),
       image: post.ogImage,
-      copyright,
       published: post.publishDate,
     };
     feed.addItem(item);
