@@ -9,6 +9,7 @@ import {
   Canvas,
   ConnInfo,
   dirname,
+  encodeUrl,
   Feed,
   FeedItem,
   Fragment,
@@ -377,7 +378,7 @@ export async function handler(req: Request, ctx: BlogContext) {
   const post = POSTS.get(pathname);
   if (post) {
     if (!post.ogImage) {
-      post.ogImage = `${canonicalUrl}/og-image?title=${post.title}`;
+      post.ogImage = `${canonicalUrl}/og-image?title=${encodeUrl(post.title)}`;
     }
     return html({
       ...sharedHtmlOptions,
