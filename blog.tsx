@@ -354,8 +354,7 @@ export async function handler(req: Request, ctx: BlogContext) {
     });
   }
 
-  const post = POSTS.get(pathname);
-  if (post) {
+  if (pathname === "/og-image") {
     const canvas = Canvas.MakeCanvas(2400, 1260);
     const context = canvas.getContext("2d");
     context.fillStyle = "black";
@@ -364,9 +363,22 @@ export async function handler(req: Request, ctx: BlogContext) {
     context.fillStyle = "white";
     context.font = "bold 60px sans-serif";
     context.textAlign = "center";
-    context.fillText(post.title, 50, 600, 2300);
-    post.ogImage = canvas.toDataURL();
+    // get title from query param
+    const title = searchParams.get("title") ?? "";
+    context.fillText(title, 50, 600, 2300);
+    const ogImage = canvas.toBuffer();
+    return new Response(ogImage, {
+      headers: {
+        "content-type": "image/png",
+      },
+    });
+  }
 
+  const post = POSTS.get(pathname);
+  if (post) {
+    if (!post.ogImage) {
+      post.ogImage = `https://neoblog.es/og-image?title=${post.title}`;
+    }
     return html({
       ...sharedHtmlOptions,
       title: post.title + " - " + (blogState.title ?? "My Blog"),
