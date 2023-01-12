@@ -355,10 +355,10 @@ export async function handler(req: Request, ctx: BlogContext) {
   }
 
   if (pathname === "/og-image") {
-    const canvas = Canvas.MakeCanvas(2400, 1260);
+    const canvas = Canvas.MakeCanvas(1200, 628);
     const context = canvas.getContext("2d");
     context.fillStyle = "black";
-    context.fillRect(0, 0, 2400, 1260);
+    context.fillRect(0, 0, 1200, 628);
     // show title centered
     context.fillStyle = "white";
     context.font = "bold 60px sans-serif";
@@ -377,7 +377,7 @@ export async function handler(req: Request, ctx: BlogContext) {
   const post = POSTS.get(pathname);
   if (post) {
     if (!post.ogImage) {
-      post.ogImage = `https://neoblog.es/og-image?title=${post.title}`;
+      post.ogImage = `${canonicalUrl}/og-image?title=${post.title}`;
     }
     return html({
       ...sharedHtmlOptions,
@@ -425,7 +425,7 @@ function serveRSS(
     ? new URL(state.canonicalUrl)
     : new URL(req.url);
   const origin = url.origin;
-  const copyright = `Copyright ${new Date().getFullYear()} ${origin}`;
+  const copyright = `${new Date().getFullYear()} ${origin}`;
   const feed = new Feed({
     title: state.title ?? "Blog",
     description: state.description,
@@ -434,7 +434,7 @@ function serveRSS(
     language: state.lang ?? "en",
     favicon: `${origin}/favicon.ico`,
     copyright: copyright,
-    generator: "Feed (https://github.com/jpmonette/feed) for Deno",
+    generator: "Feed for Deno",
     feedLinks: {
       atom: `${origin}/feed`,
     },
