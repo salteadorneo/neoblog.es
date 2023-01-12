@@ -32,6 +32,9 @@ export { default as removeMarkdown } from "https://esm.sh/remove-markdown@0.5.0"
 // Add syntax highlighting support for C by default
 import "https://esm.sh/prismjs@1.28.0/components/prism-c?no-check";
 
+import Canvas, { loadImage } from "https://deno.land/x/canvas@v1.4.1/mod.ts";
+export { Canvas, loadImage };
+
 export { UnoCSS };
 export type UnoConfig = typeof UnoCSS extends (
   arg: infer P | undefined,

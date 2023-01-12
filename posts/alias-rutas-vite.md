@@ -5,7 +5,6 @@ description: Aprende a utilizar alias en tus rutas de Vite para importar módulo
 publish_date: 2023-01-09
 tags: ["vite", "javascript", "typescript"]
 cover_html: <img src=../assets/vite.svg alt="Logo de Javascript" />
-og:image: https://neoblog.es/assets/vite.svg
 ---
 
 ## ¿Qué es Vite?

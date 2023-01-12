@@ -6,6 +6,7 @@
 
 import {
   callsites,
+  Canvas,
   ConnInfo,
   dirname,
   Feed,
@@ -18,6 +19,7 @@ import {
   html,
   HtmlOptions,
   join,
+  loadImage,
   relative,
   removeMarkdown,
   serve,
@@ -352,8 +354,31 @@ export async function handler(req: Request, ctx: BlogContext) {
     });
   }
 
+  if (pathname === "/og-image") {
+    const canvas = Canvas.MakeCanvas(1200, 628);
+    const context = canvas.getContext("2d");
+    context.fillStyle = "#24292f";
+    context.fillRect(0, 0, 1200, 628);
+    context.fillStyle = "white";
+    context.font = "bold 40px sans-serif";
+    context.textAlign = "center";
+    context.fillText("neoblog.es", 50, 80);
+    // get title from query param
+    const title = searchParams.get("title") ?? "";
+    context.fillText(title, 50, 570);
+    const ogImage = canvas.toBuffer();
+    return new Response(ogImage, {
+      headers: {
+        "content-type": "image/png",
+      },
+    });
+  }
+
   const post = POSTS.get(pathname);
   if (post) {
+    if (!post.ogImage) {
+      post.ogImage = `${canonicalUrl}/og-image?title=${post.title}`;
+    }
     return html({
       ...sharedHtmlOptions,
       title: post.title + " - " + (blogState.title ?? "My Blog"),
@@ -400,7 +425,7 @@ function serveRSS(
     ? new URL(state.canonicalUrl)
     : new URL(req.url);
   const origin = url.origin;
-  const copyright = `Copyright ${new Date().getFullYear()} ${origin}`;
+  const copyright = `${new Date().getFullYear()} ${origin}`;
   const feed = new Feed({
     title: state.title ?? "Blog",
     description: state.description,
@@ -409,7 +434,7 @@ function serveRSS(
     language: state.lang ?? "en",
     favicon: `${origin}/favicon.ico`,
     copyright: copyright,
-    generator: "Feed (https://github.com/jpmonette/feed) for Deno",
+    generator: "Feed for Deno",
     feedLinks: {
       atom: `${origin}/feed`,
     },
