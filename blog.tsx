@@ -357,15 +357,15 @@ export async function handler(req: Request, ctx: BlogContext) {
   if (pathname === "/og-image") {
     const canvas = Canvas.MakeCanvas(1200, 628);
     const context = canvas.getContext("2d");
-    context.fillStyle = "black";
+    context.fillStyle = "#24292f";
     context.fillRect(0, 0, 1200, 628);
-    // show title centered
     context.fillStyle = "white";
-    context.font = "bold 60px sans-serif";
+    context.font = "bold 40px sans-serif";
     context.textAlign = "center";
+    context.fillText("neoblog.es", 50, 80);
     // get title from query param
     const title = searchParams.get("title") ?? "";
-    context.fillText(title, 50, 600, 2300);
+    context.fillText(title, 50, 570);
     const ogImage = canvas.toBuffer();
     return new Response(ogImage, {
       headers: {
