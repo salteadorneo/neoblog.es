@@ -6,6 +6,7 @@
 
 import {
   callsites,
+  Canvas,
   ConnInfo,
   dirname,
   Feed,
@@ -18,6 +19,7 @@ import {
   html,
   HtmlOptions,
   join,
+  loadImage,
   relative,
   removeMarkdown,
   serve,
@@ -354,6 +356,17 @@ export async function handler(req: Request, ctx: BlogContext) {
 
   const post = POSTS.get(pathname);
   if (post) {
+    const canvas = Canvas.MakeCanvas(2400, 1260);
+    const context = canvas.getContext("2d");
+    context.fillStyle = "black";
+    context.fillRect(0, 0, 2400, 1260);
+    // show title centered
+    context.fillStyle = "white";
+    context.font = "bold 60px sans-serif";
+    context.textAlign = "center";
+    context.fillText(post.title, 50, 600, 2300);
+    post.ogImage = canvas.toDataURL();
+
     return html({
       ...sharedHtmlOptions,
       title: post.title + " - " + (blogState.title ?? "My Blog"),
