@@ -27,6 +27,7 @@ export interface BlogSettings {
   coverTextColor?: string;
   /** The author of the blog. Can be overridden by respective post settings. */
   author?: string;
+  authorUrl?: string;
   /** Social links */
   links?: {
     /** The link title */

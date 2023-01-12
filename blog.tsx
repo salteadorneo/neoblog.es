@@ -426,7 +426,7 @@ function serveRSS(
     ? new URL(state.canonicalUrl)
     : new URL(req.url);
   const origin = url.origin;
-
+  const copyright = `Creative Commons Reconocimiento 4.0 Internacional`;
   const feed = new Feed({
     title: state.title ?? "Blog",
     description: state.description,
@@ -434,9 +434,14 @@ function serveRSS(
     link: `${origin}/blog`,
     language: state.lang ?? "en",
     favicon: `${origin}/favicon.ico`,
+    copyright,
     generator: "Feed for Deno",
     feedLinks: {
       atom: `${origin}/feed`,
+    },
+    author: {
+      name: state.author,
+      link: state.authorUrl,
     },
   });
 
@@ -448,9 +453,10 @@ function serveRSS(
       date: post.publishDate,
       link: `${origin}${post.pathname}`,
       author: post.author?.split(",").map((author: string) => ({
-        name: author.trim(),
+        name: author.trim() ?? state.author,
       })),
       image: post.ogImage,
+      copyright,
       published: post.publishDate,
     };
     feed.addItem(item);
