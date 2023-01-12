@@ -4,7 +4,6 @@ publish_date: 2023-01-01
 tags: ['javascript', 'primitivos']
 abstract: 'En JavaScript, existen dos tipos de datos: primitivos y objetos.'
 cover_html: <img src=../assets/javascript.svg alt="Logo de Javascript" />
-og:image: https://neoblog.es/assets/javascript.svg
 ---
 
 En JavaScript, existen dos tipos de datos: **primitivos y objetos**.
