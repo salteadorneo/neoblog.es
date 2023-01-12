@@ -1,6 +1,6 @@
 ---
 title: Android Auto presenta la nueva interfaz Coolwalk
-publish_date: 2023-01-07 19:35
+publish_date: 2023-01-07 19:35:00
 tags: ['google', 'android', 'auto', 'coolwalk']
 abstract: Hace un año, en su conferencia anual para desarrolladores I/O, Google presentó varias actualizaciones para Android Auto, entre ellas la nueva interfaz de usuario llamada Coolwalk.
 cover_html: <img src=../assets/Android_Auto_icon.svg alt="Logo de Android Auto" />

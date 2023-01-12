@@ -2,7 +2,7 @@
 title: Utiliza alias en tus rutas de Vite
 description: Aprende a utilizar alias en tus rutas de Vite para importar módulos
   de forma más sencilla.
-publish_date: 2023-01-09 14:30
+publish_date: 2023-01-09 14:30:00
 tags: ["vite", "javascript", "typescript"]
 cover_html: <img src=../assets/vite.svg alt="Logo de Javascript" />
 ---
