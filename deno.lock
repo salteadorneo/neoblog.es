@@ -341,6 +341,7 @@
     "https://deno.land/x/emoji@0.1.2/emoji.ts": "e6aa205846a805bca29466d82d24476c9e8aecbee0e477b845d332786c2b1770",
     "https://deno.land/x/emoji@0.1.2/mod.ts": "e466029cda15415de960c53797b739e3034d9e56774895b34a534e054e6f4076",
     "https://deno.land/x/emoji@0.1.2/unicode.ts": "ac8079e8e1da66ae9e601c1fdd0e7641120c2b07ca7bd2875e65fe23e16e6199",
+    "https://deno.land/x/encodeurl@1.0.0/mod.ts": "b797af240fd3c4b3876b3f32b8c2404601e5503c4a10afa719e54815056685d8",
     "https://deno.land/x/fetchbase64@1.0.0/deps.ts": "2f44013a40540650b346d36b6aae141207b39426fca02ec5292d9d4d5f33f4ac",
     "https://deno.land/x/fetchbase64@1.0.0/mod.ts": "f4551a2ecf41f560dcd12c6c8cf65b5246458b2b9b2b2836693a3410b15ca82f",
     "https://deno.land/x/fetchbase64@1.0.0/src/auto.ts": "77a20763dd250b71af0ff7abe11a37722c0ee637cd1feafe4afd081f7d04e868",

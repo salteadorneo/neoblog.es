@@ -1,6 +1,6 @@
 ---
 title: Descubriendo Redis
-published_date: 2023-01-10
+publish_date: 2023-01-10 15:20:00
 tags: ["redis", "nosql", "database"]
 abstract: Redis es un sistema de base de datos de código abierto, de tipo clave-valor, que se utiliza como base de datos, caché y mensaje broker.
 cover_html: <img src=../assets/redis.svg alt="Redis" />

@@ -9,6 +9,7 @@ import {
   Canvas,
   ConnInfo,
   dirname,
+  encodeUrl,
   Feed,
   FeedItem,
   Fragment,
@@ -377,7 +378,7 @@ export async function handler(req: Request, ctx: BlogContext) {
   const post = POSTS.get(pathname);
   if (post) {
     if (!post.ogImage) {
-      post.ogImage = `${canonicalUrl}/og-image?title=${post.title}`;
+      post.ogImage = `${canonicalUrl}/og-image?title=${encodeUrl(post.title)}`;
     }
     return html({
       ...sharedHtmlOptions,
@@ -425,7 +426,7 @@ function serveRSS(
     ? new URL(state.canonicalUrl)
     : new URL(req.url);
   const origin = url.origin;
-  const copyright = `${new Date().getFullYear()} ${origin}`;
+  const copyright = `Creative Commons Reconocimiento 4.0 Internacional`;
   const feed = new Feed({
     title: state.title ?? "Blog",
     description: state.description,
@@ -433,22 +434,26 @@ function serveRSS(
     link: `${origin}/blog`,
     language: state.lang ?? "en",
     favicon: `${origin}/favicon.ico`,
-    copyright: copyright,
+    copyright,
     generator: "Feed for Deno",
     feedLinks: {
       atom: `${origin}/feed`,
+    },
+    author: {
+      name: state.author,
+      link: state.authorUrl,
     },
   });
 
   for (const [_key, post] of posts.entries()) {
     const item: FeedItem = {
-      id: `${origin}/${post.title}`,
+      id: `${origin}/${post.pathname}`,
       title: post.title,
       description: post.snippet,
       date: post.publishDate,
       link: `${origin}${post.pathname}`,
       author: post.author?.split(",").map((author: string) => ({
-        name: author.trim(),
+        name: author.trim() ?? state.author,
       })),
       image: post.ogImage,
       copyright,

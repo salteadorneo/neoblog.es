@@ -2,6 +2,7 @@ import blog from "./blog.tsx";
 
 blog({
   author: "salteadorneo",
+  authorUrl: "https://salteadorneo.dev",
   title: "neoblog.es",
   description: "El blog de /salteadorneo/",
   lang: "es",

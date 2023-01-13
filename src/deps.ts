@@ -40,3 +40,6 @@ export type UnoConfig = typeof UnoCSS extends (
   arg: infer P | undefined,
 ) => unknown ? P
   : never;
+
+import { encodeUrl } from "https://deno.land/x/encodeurl@1.0.0/mod.ts";
+export { encodeUrl };
