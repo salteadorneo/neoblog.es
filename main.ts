@@ -32,4 +32,17 @@ blog({
     });
   },
   showHeaderOnPostPage: true,
+  style: `
+    iframe {
+      max-width: 100vw;
+      width: calc(590px + 100px);
+      margin-left: -50px;
+    }
+    @media (max-width: 690px) {
+      iframe {
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+  `,
 });
