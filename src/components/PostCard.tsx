@@ -22,7 +22,7 @@ export function PostCard(
       <a href={post.pathname}>
         {post.coverHtml && (
           <div
-            class="pb-6 sm:w-36 sm:aspect-square"
+            class="h-24 aspect-square"
             dangerouslySetInnerHTML={{ __html: post.coverHtml }}
           />
         )}
