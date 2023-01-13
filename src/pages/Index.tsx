@@ -27,12 +27,20 @@ export function Index({ req, state, posts }: IndexProps) {
     (a, b) => (b.publishDate?.getTime() ?? 0) - (a.publishDate?.getTime() ?? 0),
   );
 
+  const url = new URL(req.url);
+  const tag = new URLSearchParams(url.searchParams).get("tag") || null;
+
   return (
     <div class="home">
       {state.header || <Header req={req} state={state} />}
 
       <div class="max-w-screen-sm px-6 mx-auto">
         <div class="pt-16 lt-sm:pt-12">
+          {tag && (
+            <span class="text-lg font-bold text-bluegray-500">
+              Filtrando #{tag}
+            </span>
+          )}
           {postIndex.length === 0 && (
             <div class="text-center">
               <h1 class="text-3xl font-bold">Nada por aquí</h1>
