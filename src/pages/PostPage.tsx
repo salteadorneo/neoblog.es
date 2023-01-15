@@ -49,33 +49,36 @@ export function PostPage({ req, post, state }: PostPageProps) {
           </a>
         </div>
 
-        {post.coverHtml && (
-          <div
-            class="pb-12 aspect-square"
-            dangerouslySetInnerHTML={{ __html: post.coverHtml }}
-          />
-        )}
-
         <article>
-          <h1 class="text-4xl text-gray-900 dark:text-gray-100 font-bold">
-            {post.title}
-          </h1>
-          {state.readtime &&
-            <p>{post.readTime} min</p>}
+          <div class="flex gap-4">
+            {post.coverHtml && (
+              <div
+                class="h-24 aspect-square"
+                dangerouslySetInnerHTML={{ __html: post.coverHtml }}
+              />
+            )}
+            <div>
+              <h1 class="text-4xl text-gray-900 dark:text-gray-100 font-bold">
+                {post.title}
+              </h1>
+              {state.readtime &&
+                <p>{post.readTime} min</p>}
 
-          <Tags tags={post.tags} />
+              <Tags tags={post.tags} />
 
-          <p class="mt-1 text-gray-500">
-            {
-              /* {(post.author || state.author) && (
+              <p class="mt-1 text-gray-500">
+                {
+                  /* {(post.author || state.author) && (
               <p>{post.author || state.author}</p>
             )} */
-            }
-            <Time
-              date={post.publishDate}
-              dateFormat={state.dateFormat}
-            />
-          </p>
+                }
+                <Time
+                  date={post.publishDate}
+                  dateFormat={state.dateFormat}
+                />
+              </p>
+            </div>
+          </div>
 
           <div
             class="mt-8 markdown-body"
