@@ -261,7 +261,7 @@ async function loadPost(postsDirectory: string, path: string) {
 export async function handler(req: Request, ctx: BlogContext) {
   const { state: blogState } = ctx;
   const { pathname, searchParams } = new URL(req.url);
-  const canonicalUrl = blogState.canonicalUrl || new URL(req.url);
+  const canonicalUrl = blogState.canonicalUrl || new URL(req.url).toString();
   const ogImage = typeof blogState.ogImage !== "string"
     ? blogState.ogImage?.url
     : blogState.ogImage;
