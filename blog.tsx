@@ -330,10 +330,12 @@ export async function handler(req: Request, ctx: BlogContext) {
     }
   }
 
+  const mainTitle = `${blogState.title} - ${blogState.description}` ?? "";
+
   if (pathname === "/") {
     return html({
       ...sharedHtmlOptions,
-      title: blogState.title ?? "My Blog",
+      title: mainTitle,
       meta: {
         description: blogState.description,
         "og:title": blogState.title,
@@ -382,7 +384,7 @@ export async function handler(req: Request, ctx: BlogContext) {
     }
     return html({
       ...sharedHtmlOptions,
-      title: post.title + " - " + (blogState.title ?? "My Blog"),
+      title: `${post.title} - ${mainTitle}`,
       meta: {
         description: post.snippet,
         "og:title": post.title,
