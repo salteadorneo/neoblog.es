@@ -35,22 +35,28 @@ blog({
   showHeaderOnPostPage: true,
   style: `
     body {
-      background: #bdbdbd;
+      background: #6a7c71;
     }
+
+    .up {
+      background: #6a7c71;
+      box-shadow: -5px 5px 10px #536158,
+                  5px -5px 10px #81978a;
+    }
+
     header h1 {
-      border-radius: 30px;
-      background: #bdbdbd;
-      box-shadow: -8px -8px 16px #acacac, 8px 8px 16px #cecece;
+      border-radius: 0;
+      color: #b4b4b4;
       display: grid;
       align-items: center;
       justify-content: center;
-      padding: 8px 24px;
+      aspect-ratio: 3/2;
+      padding: 0 20px;
     }
-    article .aspect-square {
-      padding: 10px;
-      border-radius: 0px;
-      background: #bdbdbd;
-      box-shadow: -8px -8px 16px #acacac, 8px 8px 16px #cecece;
+
+    .links a {
+      border-radius: 50%;
+      padding: 5px;
     }
 
     .search {
@@ -62,31 +68,24 @@ blog({
     .search__input {
       font-family: inherit;
       font-size: inherit;
-      background-color: #f4f2f2;
       border: none;
-      color: #646464;
+      color: #b4b4b4;
       padding: .5rem 1rem;
       border-radius: 30px;
-      transition: all ease-in-out .5s;
+      transition: all ease-in-out 3s;
       margin-right: -2rem;
-    }
-    .search__input:hover, .search__input:focus {
-      box-shadow: 0 0 1em #00000013;
+      background-color: #6a7c71;
+      box-shadow: inset -5px 5px 10px #536158,
+                  inset 5px -5px 10px #81978a;
     }
     .search__input:focus {
       outline: none;
-      background-color: #f0eeee;
     }
     .search__input::-webkit-input-placeholder {
-      font-weight: 100;
-      color: #ccc;
-    }
-    .search__input:focus + .search__button {
-      background-color: #f0eeee;
+      color: #b4b4b4;
     }
     .search__button {
       border: none;
-      background-color: #f4f2f2;
       margin-top: .1em;
     }
     .search__button:hover {
@@ -96,6 +95,9 @@ blog({
       height: 1.3em;
       width: 1.3em;
       fill: #b4b4b4;
+    }
+
+    article .aspect-square {
     }
 
     iframe {

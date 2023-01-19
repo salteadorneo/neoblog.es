@@ -53,7 +53,7 @@ export function PostPage({ req, post, state }: PostPageProps) {
           <div class="flex gap-4">
             {post.coverHtml && (
               <div
-                class="h-24 aspect-square"
+                class="h-24 aspect-square up"
                 dangerouslySetInnerHTML={{ __html: post.coverHtml }}
               />
             )}
