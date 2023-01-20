@@ -28,7 +28,7 @@ export function PostPage({ req, post, state }: PostPageProps) {
     <div className={`post ${post.pathname.substring(1)}`}>
       {state.showHeaderOnPostPage && <Header req={req} state={state} />}
 
-      <div class="max-w-screen-sm px-6 pt-8 mx-auto">
+      <div class="max-w-screen-md px-6 pt-8 mx-auto">
         <div class="pb-16 hidden">
           <a
             href="/"

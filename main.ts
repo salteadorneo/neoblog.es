@@ -35,28 +35,47 @@ blog({
   showHeaderOnPostPage: true,
   style: `
     body {
-      background: #6a7c71;
+      background: #efefef;
     }
 
     .up {
-      background: #6a7c71;
-      box-shadow: -5px 5px 10px #536158,
-                  5px -5px 10px #81978a;
+      background: #efefef;
+      box-shadow: 12px 12px 24px #cbcbcb, 
+                  -12px -12px 24px #ffffff;
     }
 
-    header h1 {
-      border-radius: 0;
-      color: #b4b4b4;
-      display: grid;
+    header a {
+      display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      aspect-ratio: 3/2;
+      border-radius: 50%;
+      aspect-ratio: 1;
+      color: #b4b4b4;
+      transition: all ease-in-out .3s;
       padding: 0 20px;
+    }
+    header a:hover {
+      box-shadow: 6px 6px 12px #cbcbcb, 
+                  -6px -6px 12px #ffffff;
+    }
+    header h1 {
+      font-size: 38px;
+      line-height: 38px;
+    }
+    header span {
+      font-size: 14px;
+      line-height: 14px;
     }
 
     .links a {
       border-radius: 50%;
       padding: 5px;
+    }
+    .links a:hover {
+      color: black;
+      box-shadow: 6px 6px 12px #cbcbcb, 
+                  -6px -6px 12px #ffffff;
     }
 
     .search {
@@ -71,12 +90,12 @@ blog({
       border: none;
       color: #b4b4b4;
       padding: .5rem 1rem;
-      border-radius: 30px;
       transition: all ease-in-out 3s;
       margin-right: -2rem;
-      background-color: #6a7c71;
-      box-shadow: inset -5px 5px 10px #536158,
-                  inset 5px -5px 10px #81978a;
+      border-radius: 24px;
+      background: #efefef;
+      box-shadow: inset 6px 6px 12px #cbcbcb, 
+                  inset -6px -6px 12px #ffffff;
     }
     .search__input:focus {
       outline: none;
@@ -98,6 +117,12 @@ blog({
     }
 
     article .aspect-square {
+      border-radius: 4px;
+      overflow: hidden;
+      background: #efefef;
+      display: grid;
+      align-items: center;
+      padding: 5px;
     }
 
     iframe {

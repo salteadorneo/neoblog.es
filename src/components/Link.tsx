@@ -34,7 +34,7 @@ export function Link(
 
   return (
     <a
-      class="relative flex items-center justify-center w-10 h-10 rounded-full bg-gray-600/10 dark:bg-gray-400/10 text-gray-700 dark:text-gray-400 hover:bg-gray-600/15 dark:hover:bg-gray-400/15 hover:text-black dark:hover:text-white transition-colors group up"
+      class="relative flex items-center justify-center w-10 h-10 rounded-full group up"
       href={link.url}
       rel={link.target === "_blank" ? "noopener noreferrer" : ""}
       target={link.target ?? "_self"}

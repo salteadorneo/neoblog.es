@@ -25,7 +25,7 @@ export function Header({ req, state }: IndexProps) {
         backgroundImage: state.cover ? `url(${state.cover})` : undefined,
       }}
     >
-      <div class="flex flex-col sm:flex-row items-center justify-between px-4 max-w-screen-sm mx-auto">
+      <div class="flex flex-col sm:flex-row items-center justify-between px-4 max-w-screen-md mx-auto">
         <div class="flex flex-col">
           {state.avatar && (
             <a
@@ -39,11 +39,10 @@ export function Header({ req, state }: IndexProps) {
               style={{ backgroundImage: `url(${state.avatar})` }}
             />
           )}
-          <h1 class="text-4xl font-bold up">
-            <a href="/">
-              NEO
-            </a>
-          </h1>
+          <a href="/" class="up">
+            <h1>NEO</h1>
+            <span>{state.description}</span>
+          </a>
           {
             /* {state.description && (
             <p

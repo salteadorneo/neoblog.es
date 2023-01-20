@@ -34,7 +34,7 @@ export function Index({ req, state, posts }: IndexProps) {
     <div class="home">
       {state.header || <Header req={req} state={state} />}
 
-      <div class="max-w-screen-sm px-6 mx-auto">
+      <div class="max-w-screen-md px-6 mx-auto">
         <div class="pt-16 lt-sm:pt-12">
           {tag && (
             <span class="text-2xl font-bold text-white-500">
