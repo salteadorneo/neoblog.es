@@ -330,7 +330,12 @@ export async function handler(req: Request, ctx: BlogContext) {
     }
   }
 
-  const mainTitle = `${blogState.title} - ${blogState.description}` ?? "";
+  let mainTitle = `${blogState.title} - ${blogState.description}` ?? "";
+
+  const tag = searchParams.get("tag") || "";
+  if (tag) {
+    mainTitle = `#${tag} - ${mainTitle}`;
+  }
 
   if (pathname === "/") {
     return html({
