@@ -130,10 +130,10 @@ blog({
       filter: grayscale(0);
     }
 
-    iframe {
+    iframe, .highlight {
       max-width: 100vw;
-      width: calc(720px + 100px);
-      margin-left: -50px;
+      width: calc(720px + 150px);
+      margin-left: -75px;
     }
     @media (max-width: 845px) {
       iframe {
