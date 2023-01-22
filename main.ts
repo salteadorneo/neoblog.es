@@ -136,7 +136,7 @@ blog({
       margin-left: -75px;
     }
     @media (max-width: 845px) {
-      iframe {
+      iframe, .highlight {
         width: 100%;
         margin-left: 0;
       }
