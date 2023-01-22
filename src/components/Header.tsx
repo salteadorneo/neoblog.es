@@ -39,7 +39,7 @@ export function Header({ req, state }: IndexProps) {
               style={{ backgroundImage: `url(${state.avatar})` }}
             />
           )}
-          <a href="/" class="up">
+          <a href="/" class="up mb-8 sm:mb-0">
             <h1>NEO</h1>
             <span>{state.description}</span>
           </a>
@@ -89,20 +89,3 @@ export function Header({ req, state }: IndexProps) {
     </header>
   );
 }
-
-const SearchIcon = () => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
-      d="M11.487 3.538c-4.39 0-7.949 3.556-7.949 7.94 0 4.383 3.558 7.938 7.95 7.938 2.19 0 4.172-.884 5.61-2.316a7.906 7.906 0 0 0 2.338-5.623c0-4.383-3.558-7.939-7.949-7.939ZM2 11.478C2 6.241 6.248 2 11.487 2s9.487 4.242 9.487 9.477a9.436 9.436 0 0 1-2.266 6.147l3.066 3.063a.77.77 0 0 1-1.087 1.088l-3.069-3.065a9.458 9.458 0 0 1-6.13 2.244C6.247 20.954 2 16.712 2 11.477Z"
-      fill="#030D45"
-    />
-  </svg>
-);

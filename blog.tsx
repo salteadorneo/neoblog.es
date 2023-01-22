@@ -397,7 +397,14 @@ export async function handler(req: Request, ctx: BlogContext) {
       },
       styles: [
         gfm.CSS,
-        `.markdown-body { --color-canvas-default: transparent !important; --color-canvas-subtle: #edf0f2; --color-border-muted: rgba(128,128,128,0.2); } .markdown-body img + p { margin-top: 16px; }`,
+        `.markdown-body {
+          --color-canvas-default: transparent !important;
+          --color-canvas-subtle: #edf0f2;
+          --color-border-muted: rgba(128,128,128,0.2);
+        }
+        .markdown-body img + p {
+          margin-top: 16px;
+        }`,
         ...(blogState.style ? [blogState.style] : []),
       ],
       body: <PostPage req={req} post={post} state={blogState} />,

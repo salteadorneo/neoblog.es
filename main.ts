@@ -123,14 +123,19 @@ blog({
       display: grid;
       align-items: center;
       padding: 5px;
+      filter: grayscale(100%);
+    }
+
+    article:hover .aspect-square {
+      filter: grayscale(0);
     }
 
     iframe {
       max-width: 100vw;
-      width: calc(590px + 100px);
+      width: calc(720px + 100px);
       margin-left: -50px;
     }
-    @media (max-width: 690px) {
+    @media (max-width: 845px) {
       iframe {
         width: 100%;
         margin-left: 0;

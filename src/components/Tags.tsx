@@ -12,7 +12,10 @@ export function Tags({ tags }: { tags?: string[] }) {
     ? (
       <section class="flex gap-x-2 flex-wrap">
         {tags?.map((tag) => (
-          <a class="text-bluegray-500 font-bold" href={`/?tag=${tag}`}>
+          <a
+            class="text-primary font-bold hover:text-gray-500"
+            href={`/?tag=${tag}`}
+          >
             #{tag}
           </a>
         ))}

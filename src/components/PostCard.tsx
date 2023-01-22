@@ -28,29 +28,20 @@ export function PostCard(
         )}
       </a>
       <div>
-        <h3 class="text-2xl font-bold">
+        <h3 class="text-2xl font-bold hover:text-gray-500">
           <a href={post.pathname}>
             {post.title}
           </a>
         </h3>
         <Tags tags={post.tags} />
-        <p class="text-gray-500/80">
+        <p class="text-gray-500/80 text-sm">
           {post.author && <span>{post.author} {" "}</span>}
           <Time
             date={post.publishDate}
             dateFormat={dateFormat}
           />
         </p>
-        <p class="mt-3 text-gray-600 dark:text-gray-400">{post.snippet}</p>
-        <p class="mt-3">
-          <a
-            class="leading-tight text-gray-900 dark:text-gray-100 inline-block border-b-1 border-gray-600 hover:text-gray-500 hover:border-gray-500 transition-colors"
-            href={post.pathname}
-            title={`Read "${post.title}"`}
-          >
-            Leer más
-          </a>
-        </p>
+        <p class="mt-2 text-gray-600 dark:text-gray-400">{post.snippet}</p>
       </div>
     </article>
   );

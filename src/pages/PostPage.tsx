@@ -50,10 +50,10 @@ export function PostPage({ req, post, state }: PostPageProps) {
         </div>
 
         <article>
-          <div class="flex gap-4">
+          <div class="flex flex-col md:flex-row gap-8">
             {post.coverHtml && (
               <div
-                class="h-24 aspect-square up"
+                class="w-36 aspect-square up"
                 dangerouslySetInnerHTML={{ __html: post.coverHtml }}
               />
             )}
