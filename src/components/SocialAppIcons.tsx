@@ -17,7 +17,7 @@ export const socialAppIcons = new Map([
 export function IconGithub() {
   return (
     <svg
-      className="inline-block w-10 h-10"
+      className="inline-block w-8 h-8"
       viewBox="0 0 20 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +33,7 @@ export function IconGithub() {
 export function IconTwitter() {
   return (
     <svg
-      className="inline-block w-10 h-10"
+      className="inline-block w-8 h-8"
       viewBox="0 0 20 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +49,7 @@ export function IconTwitter() {
 export function IconInstagram() {
   return (
     <svg
-      className="inline-block w-10 h-10"
+      className="inline-block w-8 h-8"
       viewBox="0 0 20 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -65,7 +65,7 @@ export function IconInstagram() {
 export function IconLinkedin() {
   return (
     <svg
-      className="inline-block w-10 h-10"
+      className="inline-block w-8 h-8"
       viewBox="0 0 20 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

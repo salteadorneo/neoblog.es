@@ -91,24 +91,53 @@ export function PostPage({ req, post, state }: PostPageProps) {
           <section class="flex items-center justify-between mt-8">
             <div class="flex items-center gap-2">
               Compartir
-              <a
-                href={`https://www.linkedin.com/sharing/share-offsite/?url=${req.url}`}
-                target="_blank"
-                class="color-[#0e76a8]"
-                title="Compartir en LinkedIn"
-              >
-                <IconLinkedin />
-              </a>
-              <a
-                href={`https://twitter.com/share?url=${req.url}&text=${
-                  encodeURIComponent(post.title)
-                }&hashtags=${post.tags?.join(",")}`}
-                target="_blank"
-                class="color-[#00acee]"
-                title="Compartir en Twitter"
-              >
-                <IconTwitter />
-              </a>
+              {navigator.share
+                ? (
+                  <a
+                    onClick={() =>
+                      navigator.share({
+                        title: post.title,
+                        // text: post.description,
+                        url: req.url,
+                      })}
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill="none"
+                        stroke="#000"
+                        stroke-width="2"
+                        d="M18 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM6 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm12 7a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-2-4-8-5m8-7-8 5"
+                      />
+                    </svg>
+                  </a>
+                )
+                : (
+                  <div class="flex items-center gap-2">
+                    <a
+                      href={`https://www.linkedin.com/sharing/share-offsite/?url=${req.url}`}
+                      target="_blank"
+                      class="hover:color-[#0e76a8]"
+                      title="Compartir en LinkedIn"
+                    >
+                      <IconLinkedin />
+                    </a>
+                    <a
+                      href={`https://twitter.com/intent/tweet?url=${req.url}&text=${
+                        encodeURIComponent(post.title)
+                      }&hashtags=${post.tags?.join(",")}`}
+                      target="_blank"
+                      class="hover:color-[#00acee]"
+                      title="Compartir en Twitter"
+                    >
+                      <IconTwitter />
+                    </a>
+                  </div>
+                )}
             </div>
             <a
               href={`https://pr.new/github.com/salteadorneo/neoblog.es/edit/main/posts${post.pathname}.md`}
