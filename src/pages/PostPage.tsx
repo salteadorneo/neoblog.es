@@ -97,7 +97,7 @@ export function PostPage({ req, post, state }: PostPageProps) {
                   try {
                     await navigator.share({
                       title: post.title,
-                      // text: post.description,
+                      text: post.title,
                       url: req.url,
                     });
                   } catch (e) {
